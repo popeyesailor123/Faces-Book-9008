@@ -5,7 +5,7 @@ readonly MY_DIR="$( cd "$( dirname "${0}" )" && pwd )"
 source ${MY_DIR}/.env
 
 readonly IP=${1:-localhost}
-readonly CURL_LOG="/tmp/faces-book-curl.log"
+readonly CURL_LOG="/tmp/curl-faces-book-${FACES_BOOK_PORT}.log"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
