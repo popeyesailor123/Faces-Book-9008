@@ -26,7 +26,7 @@ docker run \
 echo "Crude wait for readyness"
 sleep 2
 
-echo "TODO: run some tests"
+echo "TODO: run some curl tests"
 #...
 
 echo "Tag the image"
