@@ -32,8 +32,8 @@ app.get("/test", (req,res) => {
 
 app.get("/identity", (req,res) => {
   res.json({
-    url:fs.readFileSync(".repo_url", "utf8").trim(),
-    sha:fs.readFileSync(".repo_sha", "utf8").trim()
+    url:fs.readFileSync("repo_url.txt", "utf8").trim(),
+    sha:fs.readFileSync("repo_sha.txt", "utf8").trim()
   });
 });
 
