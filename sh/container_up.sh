@@ -27,13 +27,13 @@ wait_till_up() # $1==container_name
 
 docker run \
   --detach \
-  --name ${FACES_BOOK_CONTAINER} \
-  --publish ${FACES_BOOK_PORT}:${FACES_BOOK_PORT} \
-  --env FACES_BOOK_PORT=${FACES_BOOK_PORT} \
-    ${DOCKER_REGISTRY_URL}/${FACES_BOOK_IMAGE}
+  --name ${APP_CONTAINER} \
+  --publish ${APP_PORT}:${APP_PORT} \
+  --env APP_PORT=${APP_PORT} \
+    ${DOCKER_REGISTRY_URL}/${APP_IMAGE}
 
 # This is the container up...
-wait_till_up ${FACES_BOOK_CONTAINER}
+wait_till_up ${APP_CONTAINER}
 # But it might not be ready yet.
 # Crude readyness test is good enough for now...
 sleep 2

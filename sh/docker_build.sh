@@ -8,5 +8,5 @@ echo "Build the docker image"
 docker build \
   --build-arg REPO_URL=$(git config --get remote.origin.url) \
   --build-arg REPO_SHA=$(git rev-parse HEAD) \
-  --tag ${FACES_BOOK_IMAGE} \
+  --tag ${APP_IMAGE} \
     ${MY_DIR}/../app

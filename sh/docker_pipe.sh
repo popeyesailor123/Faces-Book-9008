@@ -15,9 +15,8 @@ show_use()
 # - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 show_use
-${MY_DIR}/build.sh
-${MY_DIR}/down.sh
-${MY_DIR}/up.sh
-sleep 0.5
-${MY_DIR}/logs.sh
-${MY_DIR}/run_curl_tests.sh $*
+${MY_DIR}/build_image.sh
+${MY_DIR}/container_down.sh
+${MY_DIR}/container_up.sh
+${MY_DIR}/container_logs.sh
+#TODO: ${MY_DIR}/run_curl_tests.sh $*

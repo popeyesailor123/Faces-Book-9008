@@ -1,7 +1,6 @@
 
-export FACES_BOOK_PORT=9002
-
-export FACES_BOOK_IMAGE=faces-book-${FACES_BOOK_PORT}
-export FACES_BOOK_CONTAINER=faces-book-${FACES_BOOK_PORT}
+export APP_PORT=9002
+export APP_IMAGE=faces-book-${APP_PORT}
+export APP_CONTAINER=faces-book-${APP_PORT}
 
 export DOCKER_REGISTRY_URL=dockerreg.training.local:5000
