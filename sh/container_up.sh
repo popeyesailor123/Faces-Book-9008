@@ -30,10 +30,9 @@ docker run \
   --name ${FACES_BOOK_CONTAINER} \
   --publish ${FACES_BOOK_PORT}:${FACES_BOOK_PORT} \
   --env FACES_BOOK_PORT=${FACES_BOOK_PORT} \
-    ${FACES_BOOK_IMAGE} \
-      sh -c "npm start"
+    ${DOCKER_REGISTRY_URL}/${FACES_BOOK_IMAGE}
 
 # This is the container up...
 wait_till_up ${FACES_BOOK_CONTAINER}
-# But it might be ready yet. So crude wait is good enough for now...
+# But it might not be ready yet. Crude wait is good enough for now...
 sleep 2
