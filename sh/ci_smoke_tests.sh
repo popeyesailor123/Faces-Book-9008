@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 readonly MY_DIR="$( cd "$( dirname "${0}" )" && pwd )"
 source ${MY_DIR}/env-vars.sh
@@ -12,15 +11,16 @@ readonly CURL_LOG="/tmp/curl-${APP_PORT}.log"
 curl_route()
 {
   local ROUTE=$1
-  echo "cURLing... http://${IP}:${APP_PORT}${ROUTE}"
-  curl -i -f -X GET "http://${IP}:${APP_PORT}${ROUTE}" &> ${CURL_LOG}
+  local URL="http://${IP}:${APP_PORT}${ROUTE}"
+  echo "cURLing... ${URL}"
+  curl -i -f -X GET "${URL}" &> ${CURL_LOG}
   status=$?
   if [[ "${status}" -eq "0" ]]; then
     echo "PASS ${status} ${ROUTE}"
   else
     echo "FAIL ${status} ${ROUTE}"
     cat ${CURL_LOG}
-    ${MY_DIR}/logs.sh
+    ${MY_DIR}/container_logs.sh
     exit ${status}
   fi
 }
