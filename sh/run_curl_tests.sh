@@ -5,20 +5,20 @@ readonly MY_DIR="$( cd "$( dirname "${0}" )" && pwd )"
 source ${MY_DIR}/.env
 
 readonly IP=${1:-localhost}
-readonly CURL_LOG="/tmp/curl-faces-book-${FACES_BOOK_PORT}.log"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 curl_route()
 {
-  route=$1
-  echo "cURLing... http://${IP}:${FACES_BOOK_PORT}${route}"
-  curl -i -f -X GET "http://${IP}:${FACES_BOOK_PORT}${route}" &> ${CURL_LOG}
+  local ROUTE=$1
+  local CURL_LOG="/tmp/curl-faces-book-${FACES_BOOK_PORT}.log"
+  echo "cURLing... http://${IP}:${FACES_BOOK_PORT}${ROUTE}"
+  curl -i -f -X GET "http://${IP}:${FACES_BOOK_PORT}${ROUTE}" &> ${CURL_LOG}
   status=$?
   if [ "${status}" -eq "0" ]; then
-    echo "PASS ${status} ${route}"
+    echo "PASS ${status} ${ROUTE}"
   else
-    echo "FAIL ${status} ${route}"
+    echo "FAIL ${status} ${ROUTE}"
     cat ${CURL_LOG}
     ${MY_DIR}/logs.sh
   fi
