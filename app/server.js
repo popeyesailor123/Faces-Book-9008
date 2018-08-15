@@ -37,6 +37,6 @@ app.get("/identity", (req,res) => {
   });
 });
 
-const PORT = process.env.FACES_BOOK_PORT;
+const PORT = process.env.APP_PORT;
 app.listen(PORT);
 console.log(`Running on port ${PORT}`);
