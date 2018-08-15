@@ -15,7 +15,7 @@ curl_route()
   echo "cURLing... http://${IP}:${APP_PORT}${ROUTE}"
   curl -i -f -X GET "http://${IP}:${APP_PORT}${ROUTE}" &> ${CURL_LOG}
   status=$?
-  if [ "${status}" -eq "0" ]; then
+  if [[ "${status}" -eq "0" ]]; then
     echo "PASS ${status} ${ROUTE}"
   else
     echo "FAIL ${status} ${ROUTE}"
