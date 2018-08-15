@@ -4,6 +4,9 @@ set -ex
 readonly MY_DIR="$( cd "$( dirname "${0}" )" && pwd )"
 source ${MY_DIR}/.env
 
+#one time cleanup
+docker rm --force faces-book-${FACES_BOOK_PORT}
+
 echo "Build the image"
 docker build \
   --build-arg REPO_URL=$(git config --get remote.origin.url) \
