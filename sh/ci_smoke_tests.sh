@@ -11,7 +11,7 @@ readonly IP=${1:-localhost}
 curl_route()
 {
   local ROUTE=$1
-  local CURL_LOG="/tmp/curl-faces-book-${FACES_BOOK_PORT}.log"
+  local CURL_LOG="/tmp/curl-${FACES_BOOK_PORT}.log"
   echo "cURLing... http://${IP}:${FACES_BOOK_PORT}${ROUTE}"
   curl -i -f -X GET "http://${IP}:${FACES_BOOK_PORT}${ROUTE}" &> ${CURL_LOG}
   status=$?
@@ -21,6 +21,7 @@ curl_route()
     echo "FAIL ${status} ${ROUTE}"
     cat ${CURL_LOG}
     ${MY_DIR}/logs.sh
+    exit ${status}
   fi
 }
 
