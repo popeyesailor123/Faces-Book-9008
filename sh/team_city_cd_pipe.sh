@@ -4,9 +4,6 @@ set -ex
 # This script (along with .env) are SCP'd onto
 # the deployment VM into a unique folder/
 
-#one time cleanup
-docker rm --force faces-book-${FACES_BOOK_PORT}
-
 readonly MY_DIR="$( cd "$( dirname "${0}" )" && pwd )"
 source ${MY_DIR}/.env
 
@@ -15,6 +12,7 @@ docker pull ${DOCKER_REGISTRY_URL}/${FACES_BOOK_IMAGE}
 
 echo "Bring down the current web-server"
 docker rm --force ${FACES_BOOK_CONTAINER} &> /dev/null || true
+docker container ls
 
 echo "Bring up the new web-server"
 docker run \
@@ -26,6 +24,7 @@ docker run \
 
 echo "Crude wait for readyness"
 sleep 2
+docker container ls
 
 echo "Display the web-server logs"
 docker logs ${FACES_BOOK_CONTAINER}
