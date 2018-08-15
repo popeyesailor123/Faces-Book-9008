@@ -5,13 +5,13 @@ readonly MY_DIR="$( cd "$( dirname "${0}" )" && pwd )"
 source ${MY_DIR}/env-vars.sh
 
 readonly IP=${1:-localhost}
+readonly CURL_LOG="/tmp/curl-${FACES_BOOK_PORT}.log"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 curl_route()
 {
   local ROUTE=$1
-  local CURL_LOG="/tmp/curl-${FACES_BOOK_PORT}.log"
   echo "cURLing... http://${IP}:${FACES_BOOK_PORT}${ROUTE}"
   curl -i -f -X GET "http://${IP}:${FACES_BOOK_PORT}${ROUTE}" &> ${CURL_LOG}
   status=$?
