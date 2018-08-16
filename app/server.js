@@ -9,7 +9,7 @@ const fs = require("fs");
 
 const app = express();
 
-app.use(express.static("./public"))
+app.use(express.static("./public"));
 app.engine("html", ejs.renderFile);
 
 app.get(["/","/index","/years"], (req,res) => {
@@ -32,8 +32,8 @@ app.get("/test", (req,res) => {
 
 app.get("/identity", (req,res) => {
   res.json({
-    url:fs.readFileSync("repo_url.txt", "utf8").trim(),
-    sha:fs.readFileSync("repo_sha.txt", "utf8").trim()
+    url:fs.readFileSync("repo.url.txt", "utf8").trim(),
+    sha:fs.readFileSync("repo.sha.txt", "utf8").trim()
   });
 });
 
