@@ -15,10 +15,10 @@ curl_route()
   echo "cURLing... ${URL}"
   curl -i -f -X GET "${URL}" &> ${CURL_LOG}
   status=$?
-  if [[ "${status}" -eq "0" ]]; then
-    echo "PASS ${status} ${ROUTE}"
+  if [[ "${status}" == "0" ]]; then
+    echo "PASS ${URL}"
   else
-    echo "FAIL ${status} ${ROUTE}"
+    echo "FAIL ${URL}"
     cat ${CURL_LOG}
     ${MY_DIR}/container_logs.sh
     exit ${status}
