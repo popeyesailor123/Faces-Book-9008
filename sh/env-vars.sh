@@ -1,5 +1,5 @@
 
-export APP_PORT=9002
+export APP_PORT=9008
 export APP_IMAGE=faces-book-${APP_PORT}
 export APP_CONTAINER=faces-book-${APP_PORT}
 
